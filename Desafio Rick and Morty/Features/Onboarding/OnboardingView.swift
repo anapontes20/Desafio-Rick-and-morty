@@ -57,7 +57,6 @@ final class OnboardingView: UIView {
                     spacing: 22
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.setCustomSpacing(42, after: descriptionLabel)
         return stackView
     }()
     
