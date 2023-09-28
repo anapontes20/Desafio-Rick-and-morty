@@ -12,7 +12,7 @@ class OnboardingViewController: UIViewController {
     // MARK: - Properties
 
     private lazy var customView: OnboardingView = {
-        let view = OnboardingView()
+        let view = OnboardingView(delegate: self)
         return view
     }()
 
@@ -26,4 +26,13 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
     }
 
+}
+
+extension OnboardingViewController: OnboardingViewDelegate {
+    func onSeeCharactersDidTap() {
+        let viewController = HomeViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    
 }

@@ -49,6 +49,8 @@ final class OnboardingView: UIView {
         return button
     }()
     
+
+
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView([titleLabel, descriptionLabel, seeCharactersButton],
                     axis: .vertical,
@@ -66,8 +68,9 @@ final class OnboardingView: UIView {
 
     // MARK: - Inits
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(delegate: OnboardingViewDelegate) {
+        self.delegate = delegate
+        super.init(frame: .zero)
         setupView()
     }
     
