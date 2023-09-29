@@ -9,14 +9,15 @@ import UIKit
 
 //MARK: - CELLS
 
-class HomeCell: UITableViewCell {
+class CharacterCell: UITableViewCell {
     
-    static let identifier = String(describing: HomeCell.self)
+    
+    static let identifier = String(describing: CharacterCell.self)
     
     private lazy var cardBase: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         return view
     }()
     
@@ -31,7 +32,6 @@ class HomeCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 16, weight: .bold)
-        
         return label
     }()
     
@@ -45,7 +45,7 @@ class HomeCell: UITableViewCell {
     private lazy var locationDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(ofSize: 14, weight: .regular)
+        label.font = .customFont(ofSize: 14, weight: .bold)
         return label
     }()
     
@@ -88,7 +88,7 @@ class HomeCell: UITableViewCell {
 
 //MARK: - HOMECELL 
 
-extension HomeCell: ViewCode {
+extension CharacterCell: ViewCode {
     func setupHierarchy() {
         addSubview(cardBase)
         cardBase.addSubview(characterImage)
@@ -118,8 +118,9 @@ extension HomeCell: ViewCode {
     func setupConfigurations() {
         backgroundColor = .clear
         cardBase.layer.cornerRadius = 10
-        cardBase.layer.borderColor = UIColor.systemGreen.cgColor
-        cardBase.layer.borderWidth = 1
+        cardBase.layer.borderColor = UIColor.Grays.color1.cgColor
+        cardBase.layer.borderWidth = 3
+        
     }
     
     

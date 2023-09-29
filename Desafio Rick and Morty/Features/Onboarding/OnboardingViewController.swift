@@ -24,13 +24,15 @@ class OnboardingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = UIColor.Others.color7
     }
 
 }
 
 extension OnboardingViewController: OnboardingViewDelegate {
     func onSeeCharactersDidTap() {
-        let viewController = HomeViewController()
+        let viewController = CharacterViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -8,8 +8,8 @@
 import UIKit
 
 
-class HomeView: UIView {
-    
+class CharacterView: UIView {
+        
     //MARK: - TABLEVIEW:
     
     private lazy var tableView: UITableView = {
@@ -18,6 +18,7 @@ class HomeView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    //MARK: - INIT
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,14 +33,14 @@ class HomeView: UIView {
 
 //MARK: - EXTENSION:
 
-extension HomeView: ViewCode {
+extension CharacterView: ViewCode {
     func setupHierarchy() {
         addSubview(tableView)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 130),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -16),
@@ -51,11 +52,16 @@ extension HomeView: ViewCode {
         tableView.dataSource = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
         backgroundColor = .white
+        tableView.layer.masksToBounds = false
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOpacity = 0.5
+        tableView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        tableView.layer.shadowRadius = 10
+        
     }
 }
 
-
-extension HomeView: UITableViewDataSource, UITableViewDelegate {
+extension CharacterView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataCharacter.count
     }
@@ -68,6 +74,4 @@ extension HomeView: UITableViewDataSource, UITableViewDelegate {
         cell.configureCell(data: dataCharacter[indexPath.row])
         return cell
     }
-    
-    
 }
