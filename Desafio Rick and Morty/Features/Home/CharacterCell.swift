@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - CELLS
+
 class HomeCell: UITableViewCell {
     
     static let identifier = String(describing: HomeCell.self)
@@ -65,7 +67,6 @@ class HomeCell: UITableViewCell {
         return stackView
     }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -84,6 +85,8 @@ class HomeCell: UITableViewCell {
     }
     
 }
+
+//MARK: - HOMECELL 
 
 extension HomeCell: ViewCode {
     func setupHierarchy() {

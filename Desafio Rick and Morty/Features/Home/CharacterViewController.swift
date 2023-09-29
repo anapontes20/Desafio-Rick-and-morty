@@ -9,8 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    private lazy var homeCustom: HomeView = {
-        let view = HomeView()
+    private lazy var homeCustom: CharacterView = {
+        let view = CharacterView()
         return view
     }()
     

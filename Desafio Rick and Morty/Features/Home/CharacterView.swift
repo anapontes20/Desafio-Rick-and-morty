@@ -10,7 +10,7 @@ import UIKit
 
 class HomeView: UIView {
     
-    //MARK: Table View:
+    //MARK: - TABLEVIEW:
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -30,7 +30,7 @@ class HomeView: UIView {
     
 }
 
-//MARK: Extension:
+//MARK: - EXTENSION:
 
 extension HomeView: ViewCode {
     func setupHierarchy() {
@@ -49,7 +49,7 @@ extension HomeView: ViewCode {
     func setupConfigurations() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.identifier)
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
         backgroundColor = .white
     }
 }
@@ -61,8 +61,8 @@ extension HomeView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = HomeCell.identifier
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? HomeCell else {
+        let identifier = CharacterCell.identifier
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterCell else {
             return UITableViewCell()
         }
         cell.configureCell(data: dataCharacter[indexPath.row])
