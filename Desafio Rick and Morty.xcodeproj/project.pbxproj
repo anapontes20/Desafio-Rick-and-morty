@@ -13,6 +13,10 @@
 		2A97253D2AC36E8800EA7DC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A97253C2AC36E8800EA7DC6 /* Assets.xcassets */; };
 		2A9725402AC36E8800EA7DC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A97253E2AC36E8800EA7DC6 /* LaunchScreen.storyboard */; };
 		2A97254B2AC370C300EA7DC6 /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97254A2AC370C300EA7DC6 /* ViewCode.swift */; };
+		2A97254F2AC5C28500EA7DC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97254E2AC5C28500EA7DC6 /* HomeViewController.swift */; };
+		2A9725512AC5C29500EA7DC6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9725502AC5C29500EA7DC6 /* HomeView.swift */; };
+		2A9725542AC5EB6F00EA7DC6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9725532AC5EB6F00EA7DC6 /* HomeCell.swift */; };
+		2A9725562AC5F8FE00EA7DC6 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9725552AC5F8FE00EA7DC6 /* Character.swift */; };
 		D4D2451F2AC51937000628AF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2451E2AC51937000628AF /* CustomButton.swift */; };
 		D4D245212AC5194D000628AF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D245202AC5194D000628AF /* UIColor+Extensions.swift */; };
 		D4D245232AC5198E000628AF /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D245222AC5198E000628AF /* UIImage+Extensions.swift */; };
@@ -33,6 +37,10 @@
 		2A97253F2AC36E8800EA7DC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A9725412AC36E8800EA7DC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A97254A2AC370C300EA7DC6 /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		2A97254E2AC5C28500EA7DC6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2A9725502AC5C29500EA7DC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2A9725532AC5EB6F00EA7DC6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		2A9725552AC5F8FE00EA7DC6 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		D4D2451E2AC51937000628AF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D4D245202AC5194D000628AF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D4D245222AC5198E000628AF /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -107,9 +115,21 @@
 		2A9725492AC3707C00EA7DC6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				2A9725522AC5EB3500EA7DC6 /* Home */,
 				D4D2451B2AC5119E000628AF /* Onboarding */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		2A9725522AC5EB3500EA7DC6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2A97254E2AC5C28500EA7DC6 /* HomeViewController.swift */,
+				2A9725502AC5C29500EA7DC6 /* HomeView.swift */,
+				2A9725552AC5F8FE00EA7DC6 /* Character.swift */,
+				2A9725532AC5EB6F00EA7DC6 /* HomeCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		D4D2451B2AC5119E000628AF /* Onboarding */ = {
@@ -229,8 +249,12 @@
 				2A9725342AC36E8600EA7DC6 /* AppDelegate.swift in Sources */,
 				D4D245232AC5198E000628AF /* UIImage+Extensions.swift in Sources */,
 				D4D245302AC51BEB000628AF /* OnboardingView.swift in Sources */,
+				2A9725542AC5EB6F00EA7DC6 /* HomeCell.swift in Sources */,
 				2A9725362AC36E8600EA7DC6 /* SceneDelegate.swift in Sources */,
+				2A97254F2AC5C28500EA7DC6 /* HomeViewController.swift in Sources */,
+				2A9725562AC5F8FE00EA7DC6 /* Character.swift in Sources */,
 				2A97254B2AC370C300EA7DC6 /* ViewCode.swift in Sources */,
+				2A9725512AC5C29500EA7DC6 /* HomeView.swift in Sources */,
 				D4D2452E2AC51AF8000628AF /* UIFont+Extensions.swift in Sources */,
 				D4D2451F2AC51937000628AF /* CustomButton.swift in Sources */,
 			);
