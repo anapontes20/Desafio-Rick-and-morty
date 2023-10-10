@@ -7,10 +7,13 @@
 
 import UIKit
 
+protocol CharacterViewControllerDelegate: AnyObject {
+    func onSeeCharactersDidTap()
+}
 
-class HomeView: UIView {
-    
-    //MARK: Table View:
+class CharacterView: UIView {
+            
+    //MARK: - TABLEVIEW:
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -18,6 +21,7 @@ class HomeView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    //MARK: - INIT
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,17 +33,16 @@ class HomeView: UIView {
     }
     
 }
+//MARK: - EXTENSION:
 
-//MARK: Extension:
-
-extension HomeView: ViewCode {
+extension CharacterView: ViewCode {
     func setupHierarchy() {
         addSubview(tableView)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 130),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -16),
@@ -49,25 +52,30 @@ extension HomeView: ViewCode {
     func setupConfigurations() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.identifier)
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
         backgroundColor = .white
+        tableView.layer.masksToBounds = false
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOpacity = 0.5
+        tableView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        tableView.layer.shadowRadius = 10
+        
     }
 }
 
-
-extension HomeView: UITableViewDataSource, UITableViewDelegate {
+extension CharacterView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataCharacter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = HomeCell.identifier
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? HomeCell else {
+        let identifier = CharacterCell.identifier
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterCell else {
             return UITableViewCell()
         }
         cell.configureCell(data: dataCharacter[indexPath.row])
         return cell
     }
     
-    
+
 }
