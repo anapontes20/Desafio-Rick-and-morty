@@ -11,7 +11,6 @@ import UIKit
 
 class CharacterCell: UITableViewCell {
     
-    
     static let identifier = String(describing: CharacterCell.self)
     
     private lazy var cardBase: UIView = {

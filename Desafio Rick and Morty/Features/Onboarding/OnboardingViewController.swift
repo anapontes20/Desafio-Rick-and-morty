@@ -35,6 +35,4 @@ extension OnboardingViewController: OnboardingViewDelegate {
         let viewController = CharacterViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    
 }

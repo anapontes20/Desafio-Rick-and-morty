@@ -9,6 +9,7 @@ import UIKit
 
 class CharacterViewController: UIViewController {
     
+    
     //MARK: - SEARCHBAR E TITULO:
     
     override func viewDidLoad() {
@@ -55,6 +56,12 @@ class CharacterViewController: UIViewController {
         self.view = homeCustom
         
     }
-
     
+}
+
+extension CharacterViewController: CharacterViewControllerDelegate {
+    func onSeeCharactersDidTap() {
+        let viewController = CharacterProfileViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

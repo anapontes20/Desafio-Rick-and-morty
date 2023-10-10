@@ -7,9 +7,12 @@
 
 import UIKit
 
+protocol CharacterViewControllerDelegate: AnyObject {
+    func onSeeCharactersDidTap()
+}
 
 class CharacterView: UIView {
-        
+            
     //MARK: - TABLEVIEW:
     
     private lazy var tableView: UITableView = {
@@ -30,7 +33,6 @@ class CharacterView: UIView {
     }
     
 }
-
 //MARK: - EXTENSION:
 
 extension CharacterView: ViewCode {
@@ -74,4 +76,6 @@ extension CharacterView: UITableViewDataSource, UITableViewDelegate {
         cell.configureCell(data: dataCharacter[indexPath.row])
         return cell
     }
+    
+
 }
