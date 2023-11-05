@@ -77,5 +77,12 @@ extension CharacterView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Primeiro, obtenha a célula selecionada, se necessário
+        if let cell = tableView.cellForRow(at: indexPath) {
+            // Execute a navegação para a próxima tela (view controller)
+            let novaTela = CharacterProfileViewController() // Substitua por seu próprio view controller
+            self.navigationController?.pushViewController(novaTela, animated: true)
+        }
+    }
 }
