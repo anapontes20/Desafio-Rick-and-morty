@@ -9,10 +9,16 @@ import UIKit
 
 class CharacterProfileViewController: UIViewController {
 
-    
+   // var character = [HomeModel]()
+    var profile: HomeModel?
+    //var perfil = CharacterProfileView()
+    //var characterID: Int?
+    //var homeManager = HomeManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+      //  view.backgroundColor = .white
     }
     
     private lazy var characterProfile: CharacterProfileView = {
@@ -24,4 +30,16 @@ class CharacterProfileViewController: UIViewController {
         self.view = characterProfile
         
     }
+    func bindProfile(profile:HomeModel) t {
+  
 }
+
+//extension CharacterProfileViewController: ProfileManagerDelegate {
+//    func didUpdateProfile(_ _profileManager: ProfileManager, profile: HomeModel) {
+//        perfil.titleCharacter.text = profile.nome
+//    }
+//    
+//    
+//}
+
+

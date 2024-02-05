@@ -7,48 +7,148 @@
 
 import UIKit
 
-class CharacterProfileView:UIView {
-        
-    //MARK: - IMAGE PROFILE:
+class CharacterProfileView: UIView {
     
-    private lazy var imageProfile: UIImageView = {
-        let image = UIImageView(image: .logoImg)
+    //MARK: - UISCROLLVIEW:
+    
+     lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.showsVerticalScrollIndicator = true
+        view.isDirectionalLockEnabled = true
+        return view
+    }()
+    
+    
+    //MARK: - CONTENTVIEW:
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    //MARK: - CIRCLE VIEW:
+    
+     lazy var circleView: UIView = {
+        let view = UIView()
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = 6
+        view.layer.borderWidth = 1
+        view.clipsToBounds = false
+        view.backgroundColor = .green
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    //MARK: - UIIMAGE:
+     lazy var imageCharacter: UIImageView = {
+        let image = UIImageView(image: .antennaRick)
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    //MARK: - UILABEL:
+    
+     lazy var titleCharacter: UILabel = {
+        let label = UILabel()
+        label.text = "Antenna Morty"
+        label.font = .customFont(ofSize: 30, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    //MARK: - STATUS CHARACTER:
+    
+     lazy var statusCharacter: UILabel = {
+        let label = UILabel()
+        label.text = "Alive"
+        label.font = .customFont(ofSize: 20, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    //MARK: -  ABOUT LABEL:
+     
+     lazy var aboutLabel: UILabel = {
+       let label = UILabel()
+        label.text = "About"
+        label.font = .customFont(ofSize: 20, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    //MARK: - SPECIES CHARACTER:
+    
+     lazy var speciesCharacter: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Specie: Human"
+        label.textColor = .Others.color7
+        label.font = .customFont(ofSize: 15, weight: .bold)
+        return label
+    }()
+    
+    //MARK: - ORIGIN CHARACTER:
+    
+     lazy var originCharacter: UILabel = {
+        let label = UILabel()
+        label.text = "Origin: Earth"
+        label.textColor = .Others.color7
+        label.font = .customFont(ofSize: 15, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    //MARK: - LOCATION CHARACTER:
+    
+     lazy var locationCharacter: UILabel = {
+       let label = UILabel()
+        label.text = "Location: Citadel of Ricks"
+        label.textColor = .Others.color7
+        label.font = .customFont(ofSize: 15, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }()
+    
+    //MARK: - SIMBOL ESPECIE:
+    
+     lazy var simbolSpecie: UIImageView = {
+        let image = UIImageView(image: .dna)
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         return image
     }()
+    
+    //MARK: - HSTACK:
+    
+     lazy var hStacView: UIStackView = {
+        let hStack = UIStackView(arrangedSubviews: [circleView, statusCharacter])
+        hStack.axis = .horizontal
+        hStack.alignment = .center
+        hStack.spacing = 12
+        hStack.backgroundColor = .white
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        return hStack
+    }()
 
+   
+    //MARK: - HSTACK:
     
-    // MARK: - CHARACTER NAME:
-    
-    private lazy var characterName: UILabel = {
-        let name = UILabel()
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.text = "Rick"
-        name.font = .customFont(ofSize: 30, weight: .bold)
-        return name
+     lazy var hStacViewDescription: UIStackView = {
+        let hStack = UIStackView(arrangedSubviews: [aboutLabel,speciesCharacter,originCharacter,locationCharacter])
+        hStack.axis = .vertical
+        hStack.alignment = .leading
+        hStack.distribution = .fillProportionally
+        hStack.spacing = 5
+        hStack.backgroundColor = .white
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        return hStack
     }()
-    
-    // MARK: - CHARACTER STATUS:
-    
-    private lazy var characterStatus: UILabel = {
-        let status = UILabel()
-        status.translatesAutoresizingMaskIntoConstraints = false
-        status.text = "Alive"
-        status.font = .customFont(ofSize: 15, weight: .light)
-        return status
-    }()
-    
-    // MARK: - TABLEVIEW:
-
-    private lazy var tableViewProfile: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .clear
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
-    
     //MARK: - INIT:
     
     override init(frame: CGRect) {
@@ -59,73 +159,65 @@ class CharacterProfileView:UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
-//MARK: - EXTENSION:
+
+//MARK: - EXTENSIONS:
 
 extension CharacterProfileView: ViewCode {
     func setupHierarchy() {
-        addSubview(imageProfile)
-        addSubview(characterName)
-        addSubview(characterStatus)
-        addSubview(tableViewProfile)
-        tableViewProfile.register(CharacterProfileCell.self, forCellReuseIdentifier: CharacterProfileCell.identifier)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        addSubview(imageCharacter)
+        addSubview(titleCharacter)
+        addSubview(hStacView)
+        addSubview(hStacViewDescription)
 
+//        addSubview(statusCharacter)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageProfile.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 100),
-            imageProfile.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageProfile.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageProfile.widthAnchor.constraint(equalToConstant: 100),
-            imageProfile.heightAnchor.constraint(equalToConstant: 100),
-                    
-            characterName.topAnchor.constraint(equalTo: imageProfile.bottomAnchor, constant: 100),
-            characterName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            characterName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            characterName.bottomAnchor.constraint(equalTo: characterStatus.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
-            characterStatus.topAnchor.constraint(equalTo: characterName.bottomAnchor, constant: 100),
-            characterStatus.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
-            characterStatus.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            characterStatus.bottomAnchor.constraint(equalTo: tableViewProfile.topAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 2),
 
-            tableViewProfile.topAnchor.constraint(equalTo: characterStatus.bottomAnchor, constant: 100),
-            tableViewProfile.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableViewProfile.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableViewProfile.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -16),
+            imageCharacter.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageCharacter.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageCharacter.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageCharacter.heightAnchor.constraint(equalToConstant: 300),
+            
+            titleCharacter.topAnchor.constraint(equalTo: imageCharacter.bottomAnchor, constant: 10),
+            titleCharacter.leadingAnchor.constraint(equalTo: imageCharacter.leadingAnchor, constant: 16),
+            titleCharacter.trailingAnchor.constraint(equalTo: imageCharacter.trailingAnchor),
 
+            hStacView.topAnchor.constraint(equalTo: titleCharacter.bottomAnchor,constant: 16),
+            hStacView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            hStacView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            hStacViewDescription.topAnchor.constraint(equalTo: hStacView.bottomAnchor,constant: 16),
+            hStacViewDescription.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
+            hStacViewDescription.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16),
+            
+            circleView.heightAnchor.constraint(equalToConstant: 12),
+            circleView.widthAnchor.constraint(equalToConstant: 12),
+            
+//            simbolSpecie.heightAnchor.constraint(equalToConstant: 5),
+//            simbolSpecie.widthAnchor.constraint(equalToConstant: 5),
+
+            
         ])
+        
     }
     
-    func setupConfigurations() {
-        tableViewProfile.delegate = self
-        tableViewProfile.dataSource = self
-    }
-}
-
-extension CharacterProfileView: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = CharacterProfileCell.identifier
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterProfileCell else {
-
-            return UITableViewCell()
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "About"
-    }
 }

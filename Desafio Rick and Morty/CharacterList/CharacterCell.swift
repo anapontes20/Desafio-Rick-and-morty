@@ -13,42 +13,42 @@ class CharacterCell: UITableViewCell {
     
     static let identifier = String(describing: CharacterCell.self)
     
-    private lazy var cardBase: UIView = {
+     lazy var cardBase: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         return view
     }()
     
-    private lazy var characterImage: UIImageView = {
+     lazy var characterImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         return image
     }()
     
-    private lazy var characterName: UILabel = {
+     lazy var characterName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 16, weight: .bold)
         return label
     }()
     
-    private lazy var statusLabel: UILabel = {
+     lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 14, weight: .regular)
         return label
     }()
     
-    private lazy var locationDescriptionLabel: UILabel = {
+     lazy var locationDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    private lazy var locationLabel: UILabel = {
+     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 14, weight: .regular)

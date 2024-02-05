@@ -7,26 +7,31 @@
 
 import UIKit
 
-protocol CharacterViewControllerDelegate: AnyObject {
-    func onSeeCharactersDidTap()
+protocol CharacterViewDelegate: AnyObject {
+    func onSeeCharactersDidTap(profile: HomeModel)
 }
 
 class CharacterView: UIView {
+    
+    var celula = CharacterCell()
             
     //MARK: - TABLEVIEW:
     
-    private lazy var tableView: UITableView = {
+     var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    //MARK: - INIT
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    weak var delegate: CharacterViewDelegate?
+    
+    //MARK: - INIT
+    init() {
+        super.init(frame: .zero)
         setupView()
     }
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -50,8 +55,6 @@ extension CharacterView: ViewCode {
     }
     
     func setupConfigurations() {
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
         backgroundColor = .white
         tableView.layer.masksToBounds = false
@@ -63,26 +66,4 @@ extension CharacterView: ViewCode {
     }
 }
 
-extension CharacterView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataCharacter.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = CharacterCell.identifier
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterCell else {
-            return UITableViewCell()
-        }
-        cell.configureCell(data: dataCharacter[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Primeiro, obtenha a célula selecionada, se necessário
-        if let cell = tableView.cellForRow(at: indexPath) {
-            // Execute a navegação para a próxima tela (view controller)
-            let novaTela = CharacterProfileViewController() // Substitua por seu próprio view controller
-            self.navigationController?.pushViewController(novaTela, animated: true)
-        }
-    }
-}
+
