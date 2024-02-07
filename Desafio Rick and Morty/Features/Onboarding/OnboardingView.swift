@@ -105,6 +105,7 @@ extension OnboardingView: ViewCode {
     
     func setupConfigurations() {
         backgroundColor = .white
+
     }
     
 }

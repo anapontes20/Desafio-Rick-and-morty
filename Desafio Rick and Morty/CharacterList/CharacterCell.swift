@@ -7,47 +7,48 @@
 
 import UIKit
 
-class HomeCell: UITableViewCell {
+//MARK: - CELLS
+
+class CharacterCell: UITableViewCell {
     
-    static let identifier = String(describing: HomeCell.self)
+    static let identifier = String(describing: CharacterCell.self)
     
-    private lazy var cardBase: UIView = {
+     lazy var cardBase: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         return view
     }()
     
-    private lazy var characterImage: UIImageView = {
+     lazy var characterImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         return image
     }()
     
-    private lazy var characterName: UILabel = {
+     lazy var characterName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 16, weight: .bold)
-        
         return label
     }()
     
-    private lazy var statusLabel: UILabel = {
+     lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 14, weight: .regular)
         return label
     }()
     
-    private lazy var locationDescriptionLabel: UILabel = {
+     lazy var locationDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(ofSize: 14, weight: .regular)
+        label.font = .customFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    private lazy var locationLabel: UILabel = {
+     lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(ofSize: 14, weight: .regular)
@@ -64,7 +65,6 @@ class HomeCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -85,7 +85,9 @@ class HomeCell: UITableViewCell {
     
 }
 
-extension HomeCell: ViewCode {
+//MARK: - HOMECELL 
+
+extension CharacterCell: ViewCode {
     func setupHierarchy() {
         addSubview(cardBase)
         cardBase.addSubview(characterImage)
@@ -115,8 +117,9 @@ extension HomeCell: ViewCode {
     func setupConfigurations() {
         backgroundColor = .clear
         cardBase.layer.cornerRadius = 10
-        cardBase.layer.borderColor = UIColor.systemGreen.cgColor
-        cardBase.layer.borderWidth = 1
+        cardBase.layer.borderColor = UIColor.Grays.color1.cgColor
+        cardBase.layer.borderWidth = 3
+        
     }
     
     
